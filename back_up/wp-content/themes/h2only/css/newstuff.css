@@ -1,0 +1,12 @@
+#header-strap .strap.graphic {
+    margin-left: 120px;
+    margin-top: 50px;
+}
+#header-strap .description .home-desc1{
+    font-size: 36.48px;
+    margin-top: 17px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+delete one of the br between home-desc1 and home-desc2

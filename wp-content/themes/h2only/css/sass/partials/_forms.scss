@@ -1,0 +1,396 @@
+// H2ONLY 2015
+// FORM STYLING - SITE WIDE GENERIC FORM STYLING 
+// FOR SPECIFIC FORM PAGE STYLING LOOK AT EITHER _CREATE.SCSS OR _REGISTER.SCSS
+
+form.user-forms {
+	margin: 0 auto;	
+}
+form.user-forms .input-row {
+	width: 100%;
+	clear: both;
+	padding: 20px 0;
+	
+}
+form.user-forms .form-item {
+	clear: both;
+	overflow: hidden;
+}
+form#adduser .form-item {
+	overflow: inherit;
+}
+form p.required_text {
+	clear: both;
+}
+// LABEL STYLING
+form.user-forms .input-row label {
+	float: left;
+	width: 150px;
+	text-align: right;
+	padding: 7px 40px 0 0;
+	display: block;
+}
+// INPUT/ TEXTAREA/ SELECT STYLES
+form.user-forms .input-row input,
+form.user-forms .input-row textarea,
+form.user-forms .input-row select {
+	box-shadow: none;
+	outline: none;
+	border: 1px solid $form_border;
+	float: left;
+	width: 205px;	
+	padding: 5px 10px;
+	color: $dark_blue;
+	border-radius: 0;
+	outline: 0;
+	-webkit-appearance: none;
+	box-shadow: 0;
+	display: block;
+}
+form.user-forms .input-row select {
+	width: 227px;
+
+}
+// INPUT FORM WHEN USER SELECTS OTHER TITLE ON THE REGISTER PAGE
+.oterh-row{position:relative}
+span.other{
+	position: absolute;
+	clear: both;
+	bottom: -10px;
+	left: 190px;
+}
+
+// TERMS AGREEMENT CHECKBOX STYLES
+form .terms {
+	width: 338px;
+	border-top: 1px solid $bg_blue;
+	padding: 30px 45px;
+	margin: 25px 0 25px 100px;
+}
+form .terms label {
+	width: 100%;
+	padding: 0;
+}
+form .terms label p {
+	margin: 0;
+	display: block;
+	float: left;
+	font-size: 12px;
+}
+form .terms a {
+	color: $dark_blue;
+	text-transform: lowercase;
+}
+form .terms input {
+	float: left;
+}
+form .terms div.label {
+	float: left;
+	margin-left: 5%;
+}
+// CUSTOM CHECKBOX STYLES
+form .customCheckbox input[type="checkbox"] {
+    margin-left: -9999px!important;
+    display: inline-block!important;
+}
+form .customCheckbox input[type="checkbox"] + label span {
+    display:inline-block;
+    width:22px;
+    height:21px;
+    margin:-1px 15px 0 0;
+    vertical-align:middle;
+    background:url(../img/check_sprite.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    cursor:pointer;
+    float: left;
+    font-weight: 600;
+}
+form .customCheckbox input[type="checkbox"]:checked + label span {
+    background:url(../img/check_sprite.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 -21px;
+}
+form input[type="radio"] {
+    margin-left: -99999px!important;
+    display: inline-block!important;
+}
+form input[type="radio"] + label {
+	cursor: pointer;
+}
+form input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:20px;
+    margin:0 15px 0 0;
+    vertical-align:middle;
+    background:url(../img/radio_sprite.png);
+    cursor:pointer;
+    background-position: 0 -20px;
+    background-repeat: no-repeat;
+}
+form input[type="radio"]:checked + label span {
+    background:url(../img/radio_sprite.png);
+    background-position: 0 0;
+}
+// OPTIONAL MESSAGE - INPUT NOT REQUIRED TO PROGRESS
+aside.optional {
+	padding: 5px 0 0 10px;
+	display: block;
+	float: left;
+	font-size: 12px;
+}
+// CUSTOM SELECT BOXES - USED ON BOTH REGISTER AND CREATE PAGES
+select {
+    font-size: 100%;
+    margin: 0;
+    max-width: 100%;
+    vertical-align: baseline;
+}
+.selectStyle {
+    display: inline-block;
+    width: 227px;
+    height: 30px;
+    background: url(../img/arrows.png) no-repeat #fff;
+    background-position: 100% 100%; 
+    background-size: 30px auto;
+    position: relative;
+    overflow: hidden;
+}
+.selectStyle .styled2  {
+    width: 273px;
+}
+.selectStyle select {
+    background: transparent;
+    width: 268px!important;
+    max-width: none;
+    padding: 5px 9px;
+    border-radius: 0;
+    height: 30px;
+    -webkit-appearance: none;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+
+    cursor: hand;    
+}
+.selectStyle select {
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: "";
+}
+.selectStyle select::-ms-expand {display: none;}
+.filters {
+    background: #e6f5ff;
+    padding: 15px 0 11px;
+}
+.selectStyle label {
+	display: block;
+	vertical-align: top;
+	font-weight: bold;           
+}
+// for IE
+@media screen and (min-width:0\0) {
+    .styled-select select:focus {
+        background: #0099ff;
+    }
+}
+// SUBMIT BUTTONS
+form.user-forms .input-row button.submit  {
+	clear: both;
+	margin: 20px auto;
+	border: 0;
+	box-shadow: 0;
+	color: $white;
+	display: block;
+	text-transform: uppercase;
+}
+// FORM ERROR STYLES
+form .customCheckbox input[type="checkbox"] + label span.error,
+span.error {
+	float: right;	
+	position: absolute;
+	width: 300px;
+	color: $orange;
+	font-size: 12px;
+	padding: 4px 0 0 10px;
+}
+form .customCheckbox input[type="checkbox"] + label span.error {
+	position: relative;
+}
+
+// tablet FORM STYLES
+@include respond-to(tablet) {
+	form.user-forms .input-row {
+	  padding: 15px 0 0;
+	}
+	form.user-forms .input-row label {
+		float: none;
+		width: 100%;
+		text-align: center;
+		display: block;
+		padding: 10px 0;
+	}
+	// INPUT/ TEXTAREA/ SELECT STYLES
+	form.user-forms .input-row input,
+	form.user-forms .input-row textarea,
+	form.user-forms .input-row select {
+		float: none;
+  		padding: 5px 2%;
+  		margin: 0 auto;
+  		display: block;
+	}
+	// FORM ERROR STYLES
+	form .customCheckbox input[type="checkbox"] + label span.error,
+	span.error {  
+		position: relative;
+	  	float: none;
+		padding: 5px 0 0;
+		width: 100%;
+		text-align: center;
+		display: block;
+		clear: both;
+	}
+	form .terms {
+	    width: 80%;
+  		padding: 30px 10%;
+	  	margin: 25px auto;
+	}
+	.selectStyle {
+	  display: block;
+	  width: 227px;
+	  margin: 0 auto;
+	}
+
+	aside.optional {
+	  padding: 5px 0 0 10px;
+	  display: block;
+	  float: right;
+	  font-size: 12px;
+	  margin-top: -25px;
+	}
+	span#title-error {
+		width: 130%;
+		margin-left: -13%;
+	}
+}
+// tablet FORM STYLES
+@include respond-to(mini_tablet) {
+	form.user-forms .input-row {
+	  padding: 15px 0 0;
+	}
+	form.user-forms .input-row label {
+		float: none;
+		width: 100%;
+		text-align: center;
+		display: block;
+		padding: 10px 0;
+	}
+	// INPUT/ TEXTAREA/ SELECT STYLES
+	form.user-forms .input-row input,
+	form.user-forms .input-row textarea,
+	form.user-forms .input-row select {
+		float: none;
+  		padding: 5px 2%;
+  		width: 210px;
+  		margin: 0 auto;
+  		display: block;
+	}
+	// FORM ERROR STYLES
+	form .customCheckbox input[type="checkbox"] + label span.error,
+	span.error {  
+		position: relative;
+	  	float: none;
+		padding: 5px 0 0;
+		width: 100%;
+		text-align: center;
+		display: block;
+		clear: both;
+	}
+	span#title-error {
+		width: 130%;
+		margin-left: -13%;
+	}
+	form .terms {
+	    width: 80%;
+  		padding: 30px 10%;
+	  	margin: 25px auto;
+	}
+	.selectStyle {
+	  display: block;
+	  width: 227px;
+	  margin: 0 auto;
+	}
+	form.user-forms .input-row select {
+		width: 227px;
+	}
+	aside.optional {
+	  padding: 5px 0 0 10px;
+	  display: block;
+	  float: right;
+	  font-size: 12px;
+	  margin-top: -25px;
+	}
+}
+// MOBILE FORM STYLES
+@include respond-to(mobile) {
+	form.user-forms .input-row {
+		padding: 0;
+	}
+	form.user-forms .input-row label {
+		float: none;
+		width: 100%;
+		text-align: center;
+		clear: both;
+		display: block;
+		padding: 10px 0;
+	}
+	form.user-forms .input-row input,
+	form.user-forms .input-row textarea,
+	form.user-forms .input-row select {
+		float: none;
+		clear: both;
+		width: 95%;	
+		padding: 5px 2%;
+	}
+	form.user-forms .input-row select {
+		width: 100%;
+	}
+	form.user-forms .input-row button.submit  {
+		margin-left: 0;
+	}
+	// SELECT DROPDOWN
+	.selectStyle {
+	    width: 100%;
+	    margin: 0 auto 20px;
+	}
+	// TERMS CHECKBOX
+	form .terms {
+  		width: 100%;
+		font-size: 14px;
+	  	padding: 30px 0px;
+	  	margin-left: 0;
+	}
+	aside.optional {
+	  margin-top: 0;
+	}
+	form .terms label p {
+	  width: 80%;
+	}
+	// ERROR STYLES
+	form .customCheckbox input[type="checkbox"] + label span.error,
+	span.error {
+		float: none;	
+		position: relative;
+		width: 100%;
+		color: $orange;
+		font-size: 12px;
+		padding: 5px 0;
+		text-align: center;
+		display: block
+	}
+	span.other{
+		bottom:0;
+		left: 0;
+		width: 100%;
+	}
+}

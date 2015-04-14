@@ -1,0 +1,72 @@
+// H2ONLY HEADER STYLING
+// _HEADER.SCSS
+
+header.site_header {
+  width: 100%;
+  background: $bg_blue;
+  position: relative;
+  padding-bottom: 75px;
+  overflow: hidden;
+}
+header.site_header section.site_logo {
+  float: left;
+  padding: 20px 0 80px 0;
+}
+
+/*social section*/
+header.site_header .social_buttons {
+  float: right;
+}
+header.site_header .social_buttons ul {
+  overflow: hidden;
+}
+header.site_header .social_buttons ul li {
+  display: block;
+  float: left;  
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: 15px;
+}
+header.site_header .social_buttons ul li a {
+  display: block;
+  text-indent: -999999px;
+  padding: 13px 20px;
+  
+  background-repeat: no-repeat;
+}
+header.site_header .social_buttons ul li:last-child {
+  margin-right: 0;
+}
+header.site_header .social_buttons ul li.facebook  {
+  background-color: #0a4d7a;
+}
+header.site_header .social_buttons ul li.twitter {
+  background-color: #04c2db;
+}
+header.site_header .social_buttons ul li.email {
+  background-color: #ef8200;
+}
+header.site_header .social_buttons ul li.facebook a {
+  background-image: url(/h2only/wp-content/themes/h2only/img/face.png);
+  background-position: 13px 6px;
+}
+header.site_header .social_buttons ul li.twitter a {
+  background-image: url(/h2only/wp-content/themes/h2only/img/twitter.png);
+  background-position: 11px 12px;
+}
+header.site_header .social_buttons ul li.email a {
+  background-image: url(/h2only/wp-content/themes/h2only/img/email.png);
+  background-position: 6px 10px;
+}
+
+@include respond-to(tablet) {
+
+}
+
+@include respond-to(mobile) {
+
+}

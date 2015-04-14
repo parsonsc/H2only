@@ -1,0 +1,60 @@
+// H2ONLY CTA STYLES
+
+* {
+  white-space: normal !important; 
+}
+
+
+a {
+  color: #fff;
+}
+a:focus, *:focus {
+    noFocusLine: expression(this.onFocus=this.blur());
+}
+a:focus, a:active{
+    color:#fff; /*different color than regular*/
+}
+input[type=submit]:focus, input[type=submit]:active{
+    background-color:#fff; /*different color than regular*/
+}
+
+
+/*CTA STYLES*/
+a.site_cta,
+button.site_cta {
+  background: $orange url(../img/arrow.png);
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding: 10px 65px 10px 35px;
+  font-weight: 600;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  @include shadow;
+  @include font_title_copy;
+  text-transform: uppercase;
+  // -webkit-transition: 0.2s ease-in; 
+  // transition: 0.2s ease-in;
+}
+a.site_cta:hover,
+button.site_cta:hover {
+  box-shadow: none;
+}
+/*sign up button*/
+.row .post-4.homepage_block a.button {
+  width: 259px;
+  height: 42px;
+  display: inline-block;
+}
+
+@include respond-to(tablet) {
+  a.site_cta {
+    font-size: 18px;
+  }
+}
+
+@include respond-to(mobile) {
+  a.site_cta {
+    padding: 10px 55px 10px 30px;
+  }
+}

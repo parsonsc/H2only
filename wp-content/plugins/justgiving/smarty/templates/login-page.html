@@ -1,0 +1,45 @@
+<div class="logIn-box">
+    <header>
+        <h3>Already got a JustGiving Account?<br />Log in here.</h3>
+    </header>     
+	<form action="{$formurl}" method="post" class="user-forms" id="login_form" name="loginForm">
+	<div class="container login">
+		<div class="col-xs-* col-xs-12">
+            <div class="form-item input-row">
+                <label for="user-name">Email address*</label>
+                <input type="email" name="user-name" id="user-name" class="input-text{if $usernameerror ne ''} error{/if}" value="{$userName}"  validate="required:true" /> 
+                <span class="error">{if $usernameerror ne ''}{$usernameerror}{/if}  </span>
+              
+            </div>
+            <div class="form-item input-row">
+                <label for="password">Password*</label>
+                <input type="password" name="password" id="password" class="input-text{if $passworderror ne ''} error{/if}"  validate="required:true" />      
+<span class="error">{if $passworderror ne ''}{$passworderror}{/if}</span>
+            </div>        
+        </div>
+        <div class="container login">
+            <div class="row">
+                <div class="col-xs-* col-xs-12 fieldset-submit water-line-bottom"> 
+                    <div class="form-item input-row centered">        
+                        <button title="Login" class="button submit site_cta" type="submit">Login</button>
+                        <input type="hidden" name="action" value="log-in" />
+                        <input type="hidden" name="button" value="{$submit}" />
+                        <input type="hidden" name="formName" value="login" />
+                        {$nonce}
+                    </div>
+                </div>
+            </div>
+        </div>        
+        
+        {if $forgotURL ne ''}
+        <div class="forgot-pwd"><a href="{$forgotURL}">Oops! I forgot my password</a></div>
+        {/if}
+        
+        {if $chooseURL ne ''}
+
+        <!-- <div class="choose-account"><a href="{$chooseURL}">go back</a></div> -->
+
+        {/if}        
+    </div>    
+	</form>
+</div> 

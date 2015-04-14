@@ -1,0 +1,223 @@
+<?php
+
+/*
+Plugin Name: JustGiving 
+*/
+
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+define( 'JUSTGIVING_VERSION', '1.0.0' );
+define( 'JG_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) );
+define( 'JG_PLUGIN_URL', str_replace("http:","",plugins_url( 'justgiving' ) ) );
+
+$useSMTP = true; //defaults to using local mail if set to false
+$smtp_server = "smtp.mailgun.org";
+$smtp_helo = "mailgun.org";
+$smtp_uname = "postmaster@h2only.org.uk";
+$smtp_pword = "43jh7h18iax6";
+$mailer_id = "H2Only mail client";
+$email_from = "walter.only@h2only.org.uk";
+$reply_to = "walter.only@h2only.org.uk";
+$friendly_name = "Thank you";
+
+function sendthanks($email, $name, $vars , $page = 0 ){
+    global $useSMTP, $smtp_server, $smtp_helo, $smtp_uname, $smtp_pword, $mailer_id;
+    global $email_from, $reply_to, $friendly_name, $thisUrl;
+    $emailSubj = sprintf("Can you become a master in self-control %s", $vars['firstname']);
+
+    include_once(JG_PLUGIN_DIR.'/lib/class.html.mime.mail.inc');
+    define('CRLF', "\r\n", TRUE);
+    $mail = new html_mime_mail(array("X-Mailer: $mailer_id"));
+    if ($smtp_uname != "" || $smtp_pword != "")
+        $smtpauth = TRUE;
+    else
+        $smtpauth = FALSE;
+    $tosend = 'thanks';
+    if ($page == 1){
+        $tosend = 'thanks_page'  ;    
+    }
+
+    if (file_exists(JG_PLUGIN_DIR.'/email/'.$tosend.'.txt') && file_exists(JG_PLUGIN_DIR.'/email/'.$tosend.'.html')){
+       
+        $email_body = fread($fp = fopen(JG_PLUGIN_DIR.'/email/'.$tosend.'.txt', 'r'), filesize(JG_PLUGIN_DIR.'/email/'.$tosend.'.txt'));
+        fclose($fp);
+        $html_email_body = fread($fp = fopen(JG_PLUGIN_DIR.'/email/'.$tosend.'.html', 'r'), filesize(JG_PLUGIN_DIR.'/email/'.$tosend.'.html'));
+        fclose($fp);    
+        
+        foreach ($vars as $key => $val){
+            if(strpos($email_body, '['.trim($key).']')){
+                $email_body = preg_replace("/\[$key\]/", $val, $email_body);
+            }   
+        }
+        $email_body = preg_replace('/\[(\S.*?)\]/', '', $email_body);    
+        if ($html_email_body){
+            foreach ($vars as $key => $val){
+                if(strpos($html_email_body, '['.trim($key).']')){
+                    $html_email_body = preg_replace("/\[$key\]/", $val, $html_email_body);
+                }
+            }
+            $html_email_body = preg_replace('/\[(\S.*?)\]/', '', $html_email_body);     
+            $mail->add_html($html_email_body, $email_body, JG_PLUGIN_DIR.'/email/');
+            //$mail->add_html($html_email_body, $email_body, 'img');
+        }
+        else{
+            $mail->add_text($email_body);
+        }			
+        $mail->build_message();
+        $headers = array(
+            "From: \"$friendly_name\" <$email_from>",
+            "To: \"$name\" <$email>",	// A To: header is necessary, but does
+            "Subject: $emailSubj",		// not have to match the recipients list.
+            "Reply-To: $reply_to"
+        );
+   
+        if ($useSMTP){
+            include_once(JG_PLUGIN_DIR.'/lib/class.smtp.inc');
+            $params = array(
+                'host' => $smtp_server,	// Mail server address
+                'port' => 25,		// Mail server port
+                'helo' => $smtp_helo,	// Use your domain here.
+                'auth' => $smtpauth,	// Whether to use authentication or not.
+                'user' => $smtp_uname,	// Authentication username
+                'pass' => $smtp_pword	// Authentication password
+            );
+            //echo '<PRE>'.htmlentities($mail->get_rfc822($name, $email, $friendly_name, $email_from, $email_subj, $headers)).'</PRE>';               
+            $smtp =& smtp::connect($params);
+            $send_params = array(
+                'from'		=> $email_from,	// The return path
+                'recipients'	=> $email,	// Can be more than one address in this array.
+                'headers'	=> $headers);       
+            $mail->smtp_send($smtp, $send_params);
+        }
+        else{
+            $mail->send($name, $email, $friendly_name, $email_from, $emailSubj, $headers);
+        }	
+        //echo '<PRE>'.htmlentities($mail->get_rfc822($name, $email, $friendly_name, $email_from, $email_subj, $headers)).'</PRE>';               
+    }
+}
+
+add_action('activated_plugin','save_error');
+function save_error(){
+    update_option('plugin_error',  ob_get_contents());
+}
+global $justgiving_db_version;
+$justgiving_db_version = "1.0";
+
+register_activation_hook( __FILE__, 'justgiving_install' );
+include_once(JG_PLUGIN_DIR.'/front-end/jg.login.php');       
+include_once(JG_PLUGIN_DIR.'/front-end/jg.register.php');        		
+include_once(JG_PLUGIN_DIR.'/front-end/jg.recover.password.php');        		
+include_once(JG_PLUGIN_DIR.'/front-end/jg.create.page.php');        		
+
+if (!is_admin()) {
+    // include the menu file for the login screen
+    add_shortcode('jg-login', 'jg_front_end_login');
+
+    // include the menu file for the register screen
+    add_shortcode('jg-register', 'jg_front_end_register');
+
+    // include the menu file for the recover password screen
+    add_shortcode('jg-recover-password', 'jg_front_end_password_recovery');
+    
+    // include the menu file for the createpage screen
+    add_shortcode('jg-create-page', 'jg_front_end_create_page');
+    wp_register_script( 'jg_pagesearch', JG_PLUGIN_URL.'/js/jgacsearch.js', array('jquery','jquery-ui-autocomplete'),null,true);
+    wp_localize_script( 'jg_pagesearch', 'JGSearch', array('url' => admin_url( 'admin-ajax.php' )));
+    // Functions to deal with the AJAX request - one for logged in users, the other for non-logged in users.
+    
+    add_action('wp_enqueue_scripts', 'justgiving_enqueuescripts');      
+}
+add_action( 'wp_ajax_nopriv_ajaxjustgiving_login', 'ajaxjustgiving_login' );
+add_action( 'wp_ajax_ajaxjustgiving_login', 'ajaxjustgiving_login' );     
+add_action( 'wp_ajax_nopriv_ajaxjustgiving_register', 'ajaxjustgiving_register' );
+add_action( 'wp_ajax_ajaxjustgiving_register', 'ajaxjustgiving_register' );    
+add_action( 'wp_ajax_nopriv_ajaxjustgiving_recover', 'ajaxjustgiving_recover' );
+add_action( 'wp_ajax_ajaxjustgiving_recover', 'ajaxjustgiving_recover' );
+add_action( 'wp_ajax_nopriv_ajaxjustgiving_createpage', 'ajaxjustgiving_createpage' );
+add_action( 'wp_ajax_ajaxjustgiving_createpage', 'ajaxjustgiving_createpage' );
+add_action( 'wp_ajax_jg_autocompletesearch', 'jg_autocomplete_suggestions' );
+add_action( 'wp_ajax_nopriv_jg_autocompletesearch', 'jg_autocomplete_suggestions' );
+
+
+$wpjg_admin = JG_PLUGIN_DIR . '/admin/';	
+if (file_exists ( $wpjg_admin.'class.admin.php' ))	require_once($wpjg_admin.'class.admin.php');
+$JG_Admin = new JG_Admin();
+register_activation_hook( __FILE__, array( $JG_Admin, 'justgiving_activate' ) );
+register_deactivation_hook( __FILE__, array( $JG_Admin, 'justgiving_deactivate' ) );
+add_action( 'admin_init', array( $JG_Admin, 'justgiving_initialize' ) );
+add_action( 'admin_menu', array( $JG_Admin, 'justgiving_admin' ) );
+
+if(!function_exists('jg_curpageurl')){
+    function jg_curpageurl() {
+        $pageURL = 'http';
+        if ($_SERVER["SERVER_PORT"] == "443")
+			$pageURL .= "s";
+        $pageURL .= "://";
+        $pageURL .= $_SERVER["SERVER_NAME"];
+        if ($_SERVER["SERVER_PORT"] != "80" && $_SERVER["SERVER_PORT"] != "443")
+			$pageURL .= ":".$_SERVER["SERVER_PORT"];        
+        $pageURL .= $_SERVER["REQUEST_URI"];
+        return $pageURL;
+    }
+}
+
+if(!function_exists('jg_generate_random_username')){
+    function jg_generate_random_username($sentEmail){
+        $email = '';    
+        for($i=0; $i<strlen($sentEmail); $i++){
+            if (($sentEmail[$i] === '@') || ($sentEmail[$i] === '_') || ($sentEmail[$i] === '-') || ($sentEmail[$i] === '.'))
+                break;
+            else
+                $email .= $sentEmail[$i];
+        }
+        $username = 'pbUser'.$email.mktime(date("H"), date("i"), date("s"), date("n"), date("j"), date("Y"));
+        while (username_exists($username)){
+            $username = 'pbUser'.$email.mktime(date("H"), date("i"), date("s"), date("n"), date("j"), date("Y"));
+        }
+        return $username;
+    }
+}
+
+if(!function_exists('jg_check_missing_http')){
+    function jg_check_missing_http($redirectLink) {
+        return preg_match('#^(?:[a-z\d]+(?:-+[a-z\d]+)*\.)+[a-z]+(?::\d+)?(?:/|$)#i', $redirectLink);
+    }
+}
+
+function justgiving_enqueuescripts(){
+    wp_enqueue_script('jg_pagesearch', JG_PLUGIN_URL.'/js/jgacsearch.js', array('jquery','jquery-ui-autocomplete'));
+    wp_enqueue_script('justgiving-raised', JG_PLUGIN_URL.'/js/justgiving.js', array('jquery', 'jquery-ui-datepicker'));
+    wp_localize_script( 'justgiving-raised', 'ajaxjustgiving', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+}
+
+function justgiving_install() {
+    global $wpdb;
+    global $justgiving_db_version;
+    $table_name = $wpdb->prefix . "jgusers";
+   
+    $sql = "CREATE TABLE IF NOT EXISTS  $table_name (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` bigint(20) unsigned NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `dob` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `towncity` varchar(255) NOT NULL,
+  `county` varchar(255) NOT NULL,
+  `postcode` varchar(20) NOT NULL,
+  `packbypost` smallint(3) UNSIGNED DEFAULT 0 NOT NUll,
+  `cpage` smallint(3) UNSIGNED DEFAULT 0 NOT NUll,
+  `hasaccount` smallint(3) UNSIGNED DEFAULT 0 NOT NUll,
+  `userEnc` varchar(255) NOT NULL,  
+  `pageurl` varchar(255) NOT NULL,
+  `signupdate` int(11) unsigned NOT NULL,
+  `optin` smallint(3) UNSIGNED DEFAULT 0 NOT NUll,
+  `country` varchar(40) NOT NUll,
+  `heardabout` varchar(255) NOT NUll,
+  PRIMARY KEY (`id`)  
+    );";
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+    add_option( "justgiving_db_version", $justgiving_db_version );
+}

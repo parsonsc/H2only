@@ -1,0 +1,87 @@
+// H2ONLY INTRO BANNER STYLES
+// _intro_banner.scss
+.into_banner  {
+	background-image: url(../img/top_bg.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  margin-bottom: 35px;
+}
+.into_banner .block {
+	background-color: transparent;
+  width: 50%;
+  float: left;
+  padding: 50px 0 35px
+}
+.intro_copy { 
+  font-size: 16px;
+}
+.intro_copy h2 { 
+  font-size: 24px;
+  margin-top: 0;
+  font-weight: 900;
+}
+.intro_copy p {
+	padding-right: 35px;
+}
+.intro_img {
+  background-image: url(../img/intro_banner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right center;
+  min-height: 165px!important;
+}
+@include respond-to(tablet) {
+  .into_banner .inner_content {
+    max-width: 100%;
+  }
+  .into_banner .block {
+    padding:25px 0 25px;
+  }
+	.intro_copy {
+    font-size: 14px;
+	}
+  .intro_copy h2 {
+    font-size: 20px;
+  }
+  .into_banner  {
+    background-size: cover;
+  }
+}
+@include respond-to(mini_tablet) {
+  .into_banner .inner_content {
+    max-width: 100%;
+  }
+  .into_banner .block {
+    padding:25px 0 25px;
+  }
+  .intro_copy {
+    font-size: 14px;
+  }
+  .intro_copy h2 {
+    font-size: 20px;
+  }
+  .into_banner  {
+    background-size: cover;
+  }
+  .into_banner  .intro_img img {
+
+  }
+}
+@include respond-to(mobile) {
+  .into_banner  {
+    background-size: cover;
+  }  
+  .into_banner .block {
+    width: 100%;
+    float: none;
+    padding: 50px 0 20px
+  }
+  .into_banner .block.intro_copy {
+    padding-top: 20px;
+    font-size: 12px;
+    margin-bottom: 40px;
+    width: 96%;
+    padding: 30px 5% 0;
+  }
+}

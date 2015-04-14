@@ -1,0 +1,37 @@
+// H2ONLY INTRO BANNER STYLES
+// _intro_banner.scss
+
+
+.top_grid {
+
+}
+.top_grid ul li {
+  display: block;
+  background-color: $light_blue;
+  width: 473px
+}
+.top_grid ul li h3 {
+  font-size: 24px;
+  padding: 35px 3% 25px ;
+  margin: 0;
+}
+.top_grid ul li .grid_copy {
+  // min-height: 130px;
+}
+.top_grid ul li .grid_copy p {
+  padding: 25px 3% 25px;
+  margin: 0; 
+}
+@include respond-to(tablet) {
+
+}
+
+@include respond-to(mobile) {
+	.top_grid ul li {
+	  width: 100%;
+	  margin: 0 0 20px 0;
+	}
+  .top_grid ul li .grid_copy p {
+    padding: 25px 3% 25px 0!important;
+  }
+}

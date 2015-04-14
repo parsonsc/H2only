@@ -1,0 +1,36 @@
+/* iCheck plugin Square skin, red
+ * CUSTOMIZED
+----------------------------------- */
+.icheckbox_square-red,
+.iradio_square-red {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+    background: url(red.png) no-repeat;
+    border: none;
+}
+
+.icheckbox_square-red,
+.iradio_square-red {
+    background-position: 0 0;
+}
+    .icheckbox_square-red.hover,
+    .iradio_square-red.hover{
+        background-position: -27px 0;
+    }
+    .icheckbox_square-red.checked,
+    .iradio_square-red.checked{
+        background-position: -54px 0;
+    }
+    .icheckbox_square-red.disabled,
+    .iradio_square-red.disabled{
+        background-position: -81px 0;
+        cursor: default;
+    }
+    .icheckbox_square-red.checked.disabled,
+    .iradio_square-red.checked.disabled{
+        background-position: -108px 0;
+    }

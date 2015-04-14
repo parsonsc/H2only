@@ -1,0 +1,82 @@
+// H2ONLY CONTENT_GRID
+// _content_grid.scss
+
+.top_grid ul li {
+  display: block;
+  background-color: $light_blue;
+  width: 473px;
+  margin: 0 0 35px;
+}
+.top_grid ul li h3 {
+  font-size: 24px;
+  padding: 35px 3% 25px;
+  margin: 0;
+  font-weight: 900;
+}
+.top_grid ul li h3.daily_challenge {
+  background: $yellow;
+}
+.top_grid ul li .grid_copy {
+  padding: 25px 3% 80px;
+  margin: 0; 
+  position: relative;
+  background-image: url(../img/block_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top_grid ul li .grid_copy a.site_cta {
+  position: absolute;
+  bottom: 25px;
+  left: 3%;
+}
+@include respond-to(tablet) {
+  .top_grid ul li {
+    width: 48%
+  }
+  .top_grid ul li h3 {
+    font-size: 20px;
+    padding: 35px 3% 25px ;
+    margin: 0;
+  }
+  .top_grid ul li .grid_copy p {
+    padding: 0 3% 25px;
+    margin: 0; 
+  }
+  .top_grid ul li .grid_copy {
+    padding: 25px 3% 80px;
+    margin: 0; 
+    background-size: cover;
+  }
+  .top_grid ul li .grid_copy a.site_cta {
+    left: 6%;
+  }
+}
+@include respond-to(mini_tablet) {
+  .top_grid ul li {
+    width: 48%
+  }
+  .top_grid ul li h3 {
+    font-size: 20px;
+    padding: 35px 3% 25px ;
+    margin: 0;
+  }
+  .top_grid ul li .grid_copy p {
+    padding: 0 3% 25px;
+    margin: 0; 
+  }
+  .top_grid ul li .grid_copy {
+    padding: 25px 3% 80px;
+    margin: 0; 
+    background-size: cover;
+  }
+}
+@include respond-to(mobile) {
+	.top_grid ul li {
+	  width: 100%;
+	  margin: 0 0 20px 0;
+	}
+  .top_grid ul li .grid_copy {
+    background-size: cover;
+    height: auto!important;
+  }
+}

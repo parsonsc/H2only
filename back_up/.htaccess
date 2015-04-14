@@ -1,0 +1,21 @@
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+php_flag  log_errors on
+php_value error_reporting 8191
+
+php_value error_log  /var/www/html/test6/PHP_errors.log
+
+ModPagespeed  off
+ModPagespeedDisableFilters inline_javascript
+

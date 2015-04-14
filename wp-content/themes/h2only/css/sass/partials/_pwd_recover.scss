@@ -1,0 +1,58 @@
+// H2ONLY 
+// PASSWORD RECOVER PAGE
+
+.password_recover header {
+	background: $white;
+	text-align: center;
+	padding: 35px 0;
+}
+.password_recover form {
+	padding: 35px 0 100px;
+	width: 420px;
+}
+.password_recover form .container {
+	max-width: 100%;
+	min-width: 100%;
+}
+.password_recover form .forgot-links {
+	margin-top: 25px;	
+}
+.password_recover form .forgot-links a {
+	color: $orange;
+}
+.password_recovered {
+	width: 960px;
+	margin: 35px auto;
+}
+.password_recovered a {
+	color: $orange;
+}
+.password_recovered {
+	text-align: center;
+}
+@include respond-to(tablet){
+	.password_recovered {
+		width: 96%;
+	}
+}
+// MOBILE 
+@include respond-to(mobile) {
+	.password_recovered {
+		width: 100%;
+	}
+	.password_recover header {
+		padding: 20px 3%;
+	}
+	.password_recover form {
+		padding: 20px 0 100px;
+		width: 96%;
+	}
+	.password_recover form {
+		padding: 20px 3% 100px;
+	}
+	.password_recover form .container {
+		max-width: 96%;
+		min-width: 96%;
+	}
+	form#recover_password .input-row button.submit {margin-left: auto;}
+}

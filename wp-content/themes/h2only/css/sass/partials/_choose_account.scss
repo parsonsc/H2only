@@ -1,0 +1,56 @@
+.logIn-box {
+	padding: 0;
+	width: 100%;
+	margin: 0 auto 0;	
+}
+.logIn-box form {
+    width: 420px;
+    padding: 35px 0;
+}
+.logIn-box form.user-forms .form-item {
+  // overflow: inherit;
+}
+.logIn-box form .container {
+    min-width: 100%;
+    max-width: 100%;
+}
+.logIn-box form .forgot-pwd,
+.logIn-box form .choose-account {
+    text-align: center;
+}
+.forgot-pwd a ,
+.choose-account a {
+    color: $dark_blue;
+}
+
+.register_box {
+    text-align: center;
+    padding: 35px 0;
+}
+@include respond-to(tablet) { 
+    .logIn-box form {
+        width: 52%
+    }
+}
+@include respond-to(mini_tablet) { 
+    .logIn-box form {
+        width: 39%;
+    }
+}
+@include respond-to(mobile) { 
+    .logIn-box form {
+      width: 96%;
+      padding: 20px 0;
+    }
+    .logIn-box form.user-forms .input-row label {
+      float: none;
+      width: 100%;
+      text-align: center;
+      clear: none;
+      display: block;
+      padding: 10px 0;
+    }
+    form#login_form .input-row button.submit {
+        margin-left: auto;
+    }
+}

@@ -1,0 +1,344 @@
+// H2ONLY 
+// H2ONLY COST SLIDER STYLES
+.cost_slider .inner_content {
+  overflow: hidden;
+  background: $light_blue;
+  margin-bottom: 35px; 
+  padding: 0 0 25px;
+}
+header.slider_header {
+  clear: both;
+  padding: 25px 3%;
+}
+header.slider_header h3 {
+  text-align: center;
+  font-size: 24px;
+}
+.range-sliders,
+.calorie-values {
+  padding: 0 3%;
+  width: 42%;
+}
+.range-sliders {
+  float: left;
+}
+.calorie-values { 
+  float: right;
+}
+.range-sliders .calorie-slider .noUi-target {
+  border: 0px solid #fff;
+  box-shadow: none;
+  border-radius: 15px;
+}
+.range-sliders .counter {
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 0 15px 0;
+  text-indent: 0;
+}
+.range-sliders .calorie-slider {
+  padding-left: 17%;
+  padding: 0 0 0 25%;
+  margin: 10px 0; 
+  width: 81%;
+  height: 90px;
+  display: inline-block;
+}
+.range-sliders .calorie-slider.pint {
+  background-image: url(../img/beer.png); 
+  background-repeat: no-repeat;
+}
+.range-sliders .calorie-slider.pop {
+  background-image: url(../img/pop.png); 
+  background-repeat: no-repeat;
+}
+.range-sliders .calorie-slider.wine {
+  background-image: url(../img/wine.png); 
+  background-repeat: no-repeat;
+}
+.range-sliders .calorie-slider.tea {
+  background-image: url(../img/tea.png); 
+  background-repeat: no-repeat;
+}
+.range-sliders .calorie-slider.coffee {
+  background-image: url(../img/coffee.png); 
+  background-repeat: no-repeat;
+}
+/*ui slider - calorie / money counter*/
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,
+.noUi-target * {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-ms-touch-action: none;
+-ms-user-select: none;
+-moz-user-select: none;
+-moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #0076a1;
+  border-radius: 15px;
+}
+.noUi-origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+}
+.noUi-stacking .noUi-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+  z-index: 10;
+}
+.noUi-stacking + .noUi-origin {
+/* Fix stacking order in IE7, which incorrectly
+   creates a new context for the origins. */
+  *z-index: -1;
+}
+.noUi-state-tap .noUi-origin {
+-webkit-transition: left 0.3s, top 0.3s;
+  transition: left 0.3s, top 0.3s;
+}
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 12px;
+}
+.noUi-horizontal .noUi-handle {
+  width: 50px;
+  height: 49px;
+  left: -17px;
+  top: -16px;
+}
+.noUi-horizontal.noUi-extended {
+  padding: 0 15px;
+}
+.noUi-horizontal.noUi-extended .noUi-origin  {
+  right: -15px;
+}
+.noUi-vertical {
+  width: 18px;
+}
+.noUi-vertical .noUi-handle {
+  width: 28px;
+  height: 34px;
+  left: -6px;
+  top: -17px;
+}
+.noUi-vertical.noUi-extended {
+  padding: 15px 0;
+}
+.noUi-vertical.noUi-extended .noUi-origin  {
+  bottom: -15px;
+}
+
+/* Styling; */
+.noUi-background {
+  background: #FAFAFA;
+  box-shadow: inset 0 1px 1px #f0f0f0;
+}
+.noUi-connect {
+  background: #3FB8AF;
+}
+.noUi-origin {
+  border-radius: 15px;
+}
+.noUi-target {
+  border-radius: 4px;
+  border: 1px solid #D3D3D3;
+}
+
+/* Handles and cursors;
+ */
+.noUi-dragable {
+  cursor: w-resize;
+}
+.noUi-vertical .noUi-dragable {
+  cursor: n-resize;
+}
+.noUi-handle {
+  border: 0px solid #fff;
+  border-radius: 0;
+  background: transparent;
+  cursor: default;
+  box-shadow:none;
+  background-image: url(../img/slider_button.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,
+[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+.slider_total {
+  text-align: center;
+  font-size: 18px;
+}
+.slider_total p {
+  margin: 35px 0 0;
+}
+.slider_total img {
+  display: block;
+  clear: both;
+  margin: 0 auto;
+}
+.calories-cost {
+  font-size: 80px;
+  font-weight: 600;
+  color: #305464;
+  line-height: 80px;
+  padding: 10px 0;
+  @include font_title_copy;
+  width: 75%;
+  margin: 0 auto 20px;
+  border-top: 2px solid $bg_blue;
+  border-bottom: 2px solid $bg_blue;
+}
+.calorie-values img {
+  width: auto;
+  margin-bottom: 10px;
+}
+/*End ui slider */
+
+.slider_total_box {
+  position: relative;
+  padding: 35px 20px;
+  background: $yellow;
+  // background-image:  url(../img/total_bg.png);
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  -ms-transform: rotate(-1deg); /* IE 9 */
+  -webkit-transform: rotate(-1deg); /* Chrome, Safari, Opera */
+  transform: rotate(-1deg);
+  @include shadow;
+}
+.total_box_content {
+  -ms-transform: rotate(1deg); /* IE 9 */
+  -webkit-transform: rotate(1deg); /* Chrome, Safari, Opera */
+  transform: rotate(1deg);
+}
+.slider_total_box p {
+  margin: 0 auto 10px;
+  text-transform: uppercase;
+  font-size: 24px;
+  @include font_title_copy;
+}
+.slider_total_box header {
+  width: 75%;
+  margin: 0 auto;
+}
+.slider_total_box a.site_cta {
+  text-transform: uppercase;
+}
+
+
+@include respond-to(tablet) {
+  .cost_slider .inner_content {
+    padding: 0;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .slider_total_box {
+    padding: 25px 15px;
+  }
+  .slider_total_box a.site_cta {
+    display: block;
+    left: -7%;
+    width: 99%;
+   position: absolute;
+    padding: 10px 35px 10px 10px
+  }
+  .range-sliders .calorie-slider {
+    padding: 0 0 0 28%;
+  }
+  .slider_total_box {
+    // background-image:  url(../img/total_bg_tab.png);
+  }
+  .calories-cost {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+@include respond-to(mini_tablet) {
+  .cost_slider .inner_content {
+    padding: 0;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .range-sliders .counter {
+    font-size: 16px;
+  }
+  .range-sliders .calorie-slider {
+    padding: 0 0 0 30%;
+    width: 80%;
+    height: 80px;
+  }
+  .calories-cost {
+    font-size: 44px;
+    line-height: 44px;
+  }
+  .total_box_content a.site_cta {
+      padding: 10px 29px 10px 10px;
+      font-size: 18px;
+  }
+}
+@include respond-to(mobile) {
+  .range-sliders, .calorie-values {
+    padding: 0;
+    width: 96%;
+    padding: 0 2%;
+  }
+  .range-sliders .calorie-slider { 
+    width: 60%;
+    padding: 2px 0 2px 30%;
+  }
+  .slider_total_box {
+    padding: 35px 20px;
+    -ms-transform: rotate(0); /* IE 9 */
+    -webkit-transform: rotate(0); /* Chrome, Safari, Opera */
+    transform: rotate(0);
+    @include shadow;
+    margin-bottom: 30px;
+  }
+  .total_box_content {
+    -ms-transform: rotate(0); /* IE 9 */
+    -webkit-transform: rotate(0); /* Chrome, Safari, Opera */
+    transform: rotate(0);
+  }
+  .total_box_content a.site_cta {
+    padding: 10px 45px 10px 5px;
+    font-size: 16px;
+  }
+  .slider_total_box header {
+    width: 100%;
+  }
+  .slider_total_box p {
+    margin: 0 auto 15px;
+  }
+
+}

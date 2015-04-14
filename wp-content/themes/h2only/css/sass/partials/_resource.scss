@@ -1,0 +1,41 @@
+.resources_grid {
+	width: 100%;
+	padding: 35px 0;
+	overflow: hidden;
+}
+.terms_conditions p.title_copy {
+	font-size: 16px;
+}
+.resources_grid ul {
+	margin: 0 auto;
+}
+.resources_grid ul li {
+	display: block;
+	float: left;
+	width: 20%;
+	padding-right: 6%;
+}
+.resources_grid ul li:last-child {
+	padding-right: 0;
+}
+.resources_grid ul li img {
+	width: 100%;
+}
+.resources_grid ul li article {
+	width: 100%;
+	text-align: center;
+}
+.resources_grid ul li article a {
+	color: $dark_blue;
+	text-decoration: none;
+}
+
+@include respond-to(mobile) { 
+	.resources_grid ul li {
+		float: none;
+		width: 80%;
+		padding-right: 0;
+		margin-left: 10%;
+	}
+
+}

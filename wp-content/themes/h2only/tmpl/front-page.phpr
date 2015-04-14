@@ -1,0 +1,131 @@
+<?php
+/**
+ * Template Name: Front Page Template
+ *
+ */
+
+get_header(); ?>
+    <div role="main" class="container">
+
+        <div class="content">       
+<?php
+    global $homePageBits;
+	$homePageBits = new WP_Query();
+	$homePageBits->query(
+		array(
+			'post_type' => 'homepage_block',
+			'post_status'=> 'publish',
+			'order' => 'ASC',
+			'orderby' => 'menu_order'			
+			)
+		);
+	if ($homePageBits->have_posts()):
+        $homePageBits->in_the_loop = true;
+        $postcount = 0;
+        $opened = false;
+		while ($homePageBits->have_posts()): 
+            $postcount++;
+			$homePageBits->the_post();
+			$block_link = get_post_meta($post->ID, 'block_link', true);
+			$block_link_copy = get_post_meta($post->ID, 'block_link_copy', true);
+			$custom = get_post_custom();
+			$custom = get_post_meta($custom["_thumbnail_id"][0],'_wp_attached_file',true);  
+            if ('' != get_the_post_thumbnail()){
+            
+                /* full width */
+                if ($postcount % 2 == 0) { /*even*/ ?> 
+                </div>   
+
+            <div class="row water-bg water-line-top">
+                <div class="col-sm-6">
+                <div class="water-box-top"></div>
+                    <img class="img-responsive" src="<?php $uploads = wp_upload_dir(); echo str_replace('http://', '//', $uploads['baseurl']) .'/' . $custom ?>" alt="<?php echo strip_tags(get_the_title()); ?>" />
+                </div>
+                <div class="col-sm-6">
+                    <h3><?php the_title(); ?></h3>
+                    <?php the_content(); ?> 
+                </div>            
+            </div>
+            <div class="water-line-bottom"></div> 
+
+            <?php
+                }
+                else{ ?>        
+            <div class="row water-bg water-line-top"> <!-- BLOCK 3 -->
+                <div class="col-sm-6">
+                    <h3><?php the_title(); ?></h3>
+                    <?php the_content(); ?>
+                </div>
+                <div class="col-sm-6">
+                    <img class="full-img-responsive" src="<?php $uploads = wp_upload_dir(); echo str_replace('http://', '//', $uploads['baseurl']) .'/' . $custom ?>" alt="<?php echo strip_tags(get_the_title()); ?>" />
+                </div>
+            </div>
+            <div class="water-line-bottom"></div>
+
+            <?php
+                }
+            }else{
+            
+            if ($postcount % 2 == 0) { /*even*/
+                $opened = true; ?>
+               
+            <div class="row water-bg water-line-top"> 
+                                      
+                <div class="col-sm-6"> <!-- BLOCK 4 -->
+                    <h3><?php the_title(); ?></h3>
+                    <?php  if ($pos=strpos($post->post_content, '<!--more-->')){ ?>
+
+                    <div class="post-copy equal">
+                        <?php global $more; $more = 0;
+                        the_content('', false);
+                        $more = 1; ?>
+                    </div>
+
+                    <?php the_content('',true); 
+
+                } else { ?>
+                    <div class="post-copy equal">
+                        <?php the_content(); ?>
+                    </div>
+          <?php } ?>
+                </div>
+
+            <?php                
+            } // END IF
+
+            else { /*odd*/ ?> 
+
+                <div class="col-sm-6"> <!-- BLOCK 5 -->
+                    <h3><?php the_title(); ?></h3>
+                    
+                    <?php if ($pos=strpos($post->post_content, '<!--more-->')){ ?>
+                    <div class="post-copy equal">
+                        <?php global $more; $more = 0;
+                        the_content('', false);
+                        $more = 1; ?>
+                    </div>
+                    <?php the_content('',true);
+
+                    } else { ?>
+                        <div class="post-copy equal">
+                            <?php the_content(); ?>
+                        </div>
+                    <?php } ?>
+                </div>
+                </div><div class="water-line-bottom"> </div>
+        <?php            
+            } // END ELSE
+                  
+        } // END ELSE
+        
+        ?> 
+             
+
+        <?php endwhile; if ($opened) echo '';?>
+
+        <?php endif; ?>            
+        <!-- </div> #primary -->
+   </div>
+
+<?php get_sidebar( 'front' ); ?>
+<?php get_footer(); ?>

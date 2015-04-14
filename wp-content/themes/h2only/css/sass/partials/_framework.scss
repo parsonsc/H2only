@@ -1,0 +1,251 @@
+// H2ONLY FRAMWORK STYLES
+// _framework.scss
+body {
+  background: $white;
+  outline: none;
+  color: $dark_blue;
+  height: 100%;
+  @include font_body_copy;
+}
+.desktop_only,
+.show_desktop {display: block!important;}
+
+.hide_desktop,
+.show_mobile {display: none!important;}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-transform: uppercase;
+  @include font_title_copy
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.block.left {
+  float: left;
+}
+.block.right {
+  float: right;
+}
+.desktop_only {
+  display: block;
+}
+.tablet,
+.mobile {
+  display: none;
+}
+#wrapper {
+  width: 100%;
+  position: relative;
+}
+.container,
+.inner_content,
+.grid-container {
+  width: 100%;
+  min-width: 985px;
+  max-width: 985px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 14px;
+  position: relative;
+}
+.blue_bg {
+  background: $light_blue;
+  overflow: hidden;
+}
+.row {  
+  padding: 0;
+  margin-bottom: 20px;
+}
+.block,
+.full_bg {
+  background: $light_blue;
+}
+// GRID LAYOUT
+.block {
+  float: left;
+  position: relative;
+}
+.block img {
+  width: 100%;
+}
+.grid_100 {
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+}
+.grid_75 {
+  width: 75%;
+}
+.grid_50 {
+  width: 50%;
+}
+.grid_25 {
+  width: 25%;
+}
+img {
+  display: block;
+}
+
+sub.lower_2 {
+  font-size: 12px;
+}
+.terms_conditions {
+  padding: 35px 0;
+  margin: 0 auto;
+  width: 960px;
+}
+ // FAQ'S
+.faq_section header {
+  background: $white;
+  padding: 35px 0;
+  text-align: center;
+}
+.faq_section a {
+  color: $orange;
+  text-decoration: none;
+}
+.faq_section header h1 {
+  margin: 0;
+}
+.faq_section ul {
+  padding: 35px 0;
+}
+.faq_section ul li {
+  display: block;
+  font-size: 16px;
+  padding: 5px 0;
+}
+.faq_section ul li strong {
+  display: block;
+  padding: 5px 0;
+}
+
+// COOKIE POLICY
+.cookie-policy {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 30px;
+  font-size: 10px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 111;
+  background: $cookie;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.cookie-warn{display: block;
+ float: left;
+  width: 80%;
+}
+.cookie-close{  display: block;
+  float: right;
+  width: 15%;
+}
+
+@include respond-to(tablet) {
+    .desktop_only {
+      display: none!important;
+    }
+    .hide_desktop,
+    .tablet {
+      display: block!important;
+    }
+  .container,
+  .inner_content {
+    min-width: 96%;
+    max-width: 96%;
+    padding: 0 2%;
+  }
+  .terms_conditions {
+    width: 96%;
+  }
+  // COOKIE POLICY
+  .cookie-policy {
+    width: 100%;
+    max-width: 92%!important;
+    padding: 20px;
+    left: 0;
+  } 
+  .desktop_only {
+    display: none!important;
+  }
+
+}
+@include respond-to(mini_tablet) {
+  .hide_desktop,
+    .tablet {
+      display: block!important;
+    }
+  .desktop_only {
+    display: none!important;
+  }
+  .container,
+  .inner_content {
+    min-width: 96%;
+    max-width: 96%;
+    padding: 0 2%;
+  }
+  // COOKIE POLICY
+  .cookie-policy {
+    width: 100%;
+    max-width: 92%!important;
+    padding: 20px;
+    left: 0;
+  } 
+}
+@include respond-to(mobile) {
+  .show_desktop,
+  .tablet {display: none!important;}
+  .show_mobile {display: block!important;}
+  .mobile {
+    display: block;
+  }
+  .container,
+  .inner_content {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0;
+    font-size: 12px;
+  }
+  img.full-img-responsive {
+    width: 100%;
+  }
+  // COOKIE POLICY
+  .cookie-policy {
+    width: 100%;
+    max-width: 79%!important;
+    padding: 20px;
+    left: 0;
+  }
+  .cookie-warn,
+  .cookie-close {
+   float: none;
+   clear: both;
+    width: 100%;
+  }
+
+  // GRID LAYOUT
+  .grid_75 {
+    width: 75%;
+  }
+  .grid_50 {
+    width: 100%;
+    padding: 0 ;
+  }
+  .terms_conditions {
+    width: 96%;
+  }
+  .top_grid ul li .grid_copy p {
+    padding: 25px 3% 25px 0!important;
+  }
+}
+

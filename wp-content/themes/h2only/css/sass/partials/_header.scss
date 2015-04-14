@@ -1,0 +1,329 @@
+// H2ONLY HEADER STYLING
+// _HEADER.SCSS
+// COOKIE MESSAGE 
+.cookie-policy  {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  font-size: 10px;
+}
+.cookie-policy a {
+  color: $orange;
+}
+header.site_header {
+  width: 100%;
+  background: #39bedf;
+  position: relative;
+  overflow: hidden;
+}
+header.site_header .inner_content {
+  max-width: 1200px;
+  min-width: 1100px;
+  background-image: url(../img/header.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: 11;
+}
+img.hero_img {
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+}
+.header_inner_content {
+  position: absolute;
+  top: 0;
+  left: 7%;
+  width: 93%;
+  height: 100%;
+}
+header.site_header section.site_logo {
+  float: left;
+}
+header.site_header section.site_logo h1 {
+  margin-bottom: 0;
+}
+
+/*social section*/
+header.site_header .social_buttons {
+  float: right;
+  margin-right: 110px;
+}
+header.site_header .social_buttons ul li {
+  display: block;
+  float: left;  
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: 15px;
+  font-size: 22px;
+  @include shadow;
+}
+header.site_header .social_buttons ul li a {
+  display: block;
+  padding: 7px 15px;
+}
+header.site_header .social_buttons ul li:last-child {
+  margin-right: 0;
+}
+header.site_header .social_buttons ul li.facebook  {
+  background-color: $fb_blue;
+}
+header.site_header .social_buttons ul li.twitter {
+  background-color: $twit_blue;
+}
+header.site_header .social_buttons ul li.email {
+  background-color: $orange;
+}
+header.site_header .social_buttons ul li.facebook a {
+    padding: 7px 17px;
+}
+header.site_header .social_buttons ul li.twitter a {
+    padding: 7px 13px;
+}
+header.site_header .social_buttons ul li.email a {
+    padding: 7px 12px;
+}
+
+// _hero_banner.scss
+.hero_banner {
+  overflow: hidden;
+  margin: 0;
+  clear: both;
+  width: 60%;
+  padding-left: 3%;
+}
+.hero_banner .hero_banner_copy {
+  color: $white;
+  font-size: 22px;
+  margin-top: 35%;
+  padding-bottom: 15px;
+}
+.hero_banner .hero_banner_copy h1 {
+  text-indent: -999999px;
+  width: 450px;
+  margin: 0;
+}
+.hero_banner .hero_banner_copy p {
+  width: 65%;
+  font-size: 18px;
+  color: #305464;
+  line-height: 22px;
+  @include font_title_copy
+}
+.hero_banner .hero_banner_copy p strong {
+  margin: 35px 0;
+  display: block;
+}
+
+header.site_header .white_bar {
+  position: absolute;
+  bottom: 0;
+  left: 0; 
+  background: #eaebe6;
+  height: 145px;
+  width: 100%;
+  z-index: 1;
+}
+
+// countdown styling
+header .countdown {
+  float: left;
+  color: $bg_blue;
+  clear: both;
+  position: absolute;
+  left: 3%;
+  bottom: 0;
+  width: 100%;
+  @include font_title_copy
+}
+.hero_banner .hero_banner_copy .countdown p {
+  font-size: 26px;
+  @include font_title_copy;
+}
+header .countdown span {
+  background: $yellow;
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+  font-size: 36px;
+  background-image: url(../img/countdown_box.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+header .countdown .countdown_tagline {
+  padding: 0;
+  margin: 25px 0;
+}
+header .countdown .countdown_tagline div {
+  display: none;
+  width: 100%;
+}
+header .countdown .countdown_tagline div:first-child {
+  display: block;
+}
+@include respond-to(tablet) {
+  header.site_header .inner_content {
+    max-width: 100%;
+    min-width: 100%;
+    background-image: url(../img/header_tab.jpg);
+  }
+  .header_inner_content {left: 3%;}
+  .hero_banner {
+    width: 60%;
+    padding-left: 0%;
+  }
+  .hero_banner .hero_banner_copy p {
+    width: 80%;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  // countdown styling
+  header .countdown {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+  .hero_banner .hero_banner_copy .countdown p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  header .countdown span {
+    padding: 10px;
+    font-size: 25px;
+  }
+  header .countdown .countdown_tagline {
+    margin: 10px 0 10px;
+    font-size: 18px;
+  }
+  header.site_header .social_buttons {
+    margin-right: 0;
+  }
+}
+@include respond-to(mini_tablet) {
+ header.site_header .inner_content {
+    max-width: 100%;
+    min-width: 100%;
+    background-image: url(../img/header_tab.jpg);
+  }
+  .header_inner_content {left: 3%;}
+  .hero_banner {
+    width: 60%;
+    padding-left: 0%;
+  }
+  .hero_banner .hero_banner_copy p {
+    width: 80%;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  // countdown styling
+  header .countdown {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+  .hero_banner .hero_banner_copy .countdown p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  header .countdown span {
+    padding: 10px;
+    font-size: 25px;
+  }
+  header .countdown .countdown_tagline {
+    margin: 10px 0 10px;
+    font-size: 18px;
+  }
+  header.site_header section.site_logo h1 {
+    margin: 5px;
+  }
+  .hero_banner {
+    width: 60%;
+    padding-left: 0%;
+  }
+  .hero_banner .hero_banner_copy p {
+    width: 75%;
+    font-size: 13px;
+    line-height: 17px;
+    margin-bottom: 5px;
+  }
+  header.site_header .social_buttons {
+    margin-right: 0;
+  }
+}
+@include respond-to(mobile) {
+  header.site_header .inner_content {
+    max-width: 100%;
+    min-width: 100%;
+    background-image: url(../img/header_mob.jpg);
+  }
+  .header_inner_content {
+    left: 2%;
+    width: 96%;
+  }
+  header.site_header .social_buttons {
+    margin-right: 0;
+  }
+  header.site_header .social_buttons ul li a {
+    padding: 7px 0;
+    min-width: 42px;
+    text-align: center;
+  }
+  header.site_header .social_buttons ul li.facebook a {
+    padding: 7px 0;
+  }
+  header.site_header .social_buttons ul li.twitter a {
+    padding: 7px 0;
+  }
+  header.site_header .social_buttons ul li.email a {
+    padding: 7px 0;
+  }
+  .hero_banner {
+    width: 100%;
+    padding-left: 0;
+  }
+  .hero_banner .hero_banner_copy {
+    color: $white;
+    font-size: 22px;
+    margin-top: 50%;
+    padding-bottom: 15px;
+  }
+  .hero_banner .hero_banner_copy h1 {
+    text-indent: -999999px;
+    width: 450px;
+    margin: 0;
+  }
+  .hero_banner .hero_banner_copy p {
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    padding-bottom: 10px;
+  }
+  header.site_header .white_bar {
+    display: none;
+  }
+  // countdown styling
+  header .countdown {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+  .hero_banner .hero_banner_copy .countdown p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  header .countdown span {
+    padding: 10px;
+    font-size: 25px;
+  }
+  header .countdown .countdown_tagline {
+    margin: 10px 0 10px;
+    font-size: 18px;
+  }
+  header.site_header section.site_logo h1 {
+    margin: 5px;
+  }
+}

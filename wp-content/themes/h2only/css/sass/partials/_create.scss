@@ -1,0 +1,181 @@
+// H2ONLY
+// CREATE A PAGE STYLES
+.create_account .create_page {
+	padding: 35px 0;
+}
+.create_account p.log_out {
+	width: 100%;
+	@include font_title_copy;
+	text-align: center;
+	font-size: 18px;
+}
+.create_account p.log_out a {
+	color: $orange;
+	text-decoration: none;
+}
+.create_account .page_name p,
+.create_account .page_title p,
+.create_account .captain p {
+	display: block;
+	clear: both;
+	float: left;
+	width: 100%;
+	font-size: 12px;
+	line-height: 16px;
+	text-align: right;
+}
+form.create_page {
+	width: 870px;
+	margin-left: 150px;
+}
+form.create_page a {
+	color: $dark_blue;
+	text-decoration: underline;
+}
+
+form.create_page .input-row label{
+	width: 345px;
+}
+form.create_page .input-row label.radio_input {
+	width: 65px;
+	padding: 7px 10px 0 0;
+	font-weight: 600;
+}
+form.create_page .terms {
+	width: 338px;
+	border-top: 1px solid $bg_blue;
+	padding: 30px 100px;
+	margin-left: 100px;
+}
+form.create_page .terms label {
+	width: 100%;
+	padding: 0;
+}
+form.create_page .terms label p {
+	margin-top: 0;
+	display: block;
+	float: left;
+	font-size: 12px;
+}
+// url taken style
+form.user-forms .form-item.url-suggest {
+	display: block;
+	overflow: hidden;
+}
+form.create_page .input-row.url-suggest label {
+
+}
+form.create_page .input-row.url-suggest input, 
+form.create_page .input-row.url-suggest select {
+
+}
+.ui-helper-hidden-accessible {
+	display: block;
+	float: left;	
+}
+.url-alternatives {
+	display: block;
+}
+@include respond-to(tablet) { 
+	form.create_page {
+		width: 100%;
+		max-width: 520px;
+		margin-left: auto;		
+	}
+	form.create_page .input-row label {
+		width: 100%;
+	}
+	.create_account .page_name p,
+	.create_account .page_title p,
+	.create_account .captain p {
+		text-align: center;
+	}
+	form.create_page .input-row label.radio_input {
+	  float: left;
+	  display: block;
+	  clear: none;
+	  margin-left: 35%;
+	}
+	form.create_page .input-row label.radio_input:last-child {
+		margin-left: 5%;
+	}
+	form.create_page .terms {
+		width: 80%;
+		padding: 25px 10%;
+		margin-left: auto;
+	}
+}
+@include respond-to(mini_tablet) { 
+	form.create_page {
+		width: 100%;
+		margin-left: 0;
+	}
+	form.create_page .input-row label {
+	  width: 44%;
+	}
+	form.create_page .input-row label.radio_input {
+	  float: left;
+	  display: block;
+	  clear: none;
+	  margin-left: 35%;
+	}
+	form.create_page .input-row label.radio_input:last-child {
+		margin-left: 5%;
+	}
+	form.create_page .terms {
+		width: 80%;
+		padding: 25px 10%;
+		margin-left: auto;
+	}
+		.create_account .page_name p,
+	.create_account .page_title p,
+	.create_account .captain p {
+		text-align: center;
+	}
+}
+@include respond-to(mobile) { 
+	form.create_page {
+		width: 80%;
+		margin: 0 auto;
+	}
+	form.create_page .input-row label {
+		width: 100%;
+	}
+	div.selectBox {
+		width: 100%;
+	}
+	span.selected {
+	  width: 86%;
+	  text-indent: 10px;
+	}
+	div.selectOptions {
+	  width: 99%;
+	}
+	aside.optional {
+	  padding: 5px 0 0 10px;
+	  display: block;
+	  float: none;
+	  width: 100%;
+	  clear: both;
+	  text-align: center;
+	}
+	.create_account .page_name p,
+	.create_account .page_title p,
+	.create_account .captain p {
+		text-align: center;
+	}
+	form.create_page .input-row label.radio_input {
+	  float: left;
+	  display: block;
+	  clear: none;
+	  margin-left: 17%;
+	}
+	form.create_page .terms {
+	  width: 80%;
+	  padding: 30px 5%;
+	  margin: 15px auto 0;
+	}
+	form.create_page .terms label p {
+	  width: 80%;
+	}
+}

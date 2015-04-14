@@ -1,0 +1,112 @@
+// H2ONLY FRAMWORK STYLES
+// _framework.scss
+body {
+  background: #FFF;
+  color: #305464;
+  outline: none;
+  font-family: 'Bliss Light', Verdana,Arial,sans-serif; 
+  font-weight: 300;
+  color: #305464;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.block.left {
+  float: left;
+}
+.block.right {
+  float: right;
+}
+#wrapper {
+  width: 100%;
+  position: relative;
+}
+.container,
+.inner_content,
+.grid-container {
+  width: 100%;
+  min-width: 960px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.row {  
+  padding: 0;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.block,
+.full_bg {
+  background: $light_blue;
+}
+// GRID LAYOUT
+.block {
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+.block img {
+  width: 100%;
+}
+.grid_100 {
+  width: 100%;
+  clear: both;
+  overflow: hidden;
+}
+.grid_75 {
+  width: 75%;
+}
+.grid_50 {
+  width: 50%;
+}
+.grid_25 {
+  width: 25%;
+}
+img {
+  display: block;
+}
+
+
+
+
+@include respond-to(tablet) {
+  .container,
+  .inner_content {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+@include respond-to(mobile) {
+  .container,
+  .inner_content {
+    min-width: 96%;
+    max-width: 96%;
+    padding: 0 2%;
+  }
+  img.full-img-responsive {
+    width: 100%;
+  }
+
+
+  // GRID LAYOUT
+  .grid_75 {
+    width: 75%;
+  }
+  .grid_50 {
+    width: 98%;
+    padding: 0 1%;
+  }
+}
+

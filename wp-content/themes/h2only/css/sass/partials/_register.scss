@@ -1,0 +1,82 @@
+// H2ONLY 
+// REGISTER ACCOUNT PAGES
+
+header.sign_up_banner {
+	background: $white;
+	padding: 35px 0;
+	text-align: center;
+}
+header.sign_up_banner h2 {
+	margin-top: 0;
+	font-size: 26px;
+	@include font_title_copy;
+}
+header.sign_up_banner p.title_tag {
+	font-size: 26px;
+	line-height: 30px;
+	@include font_title_copy;
+	font-weight: 300;
+}
+header.sign_up_banner p.required_message {
+	font-weight: 600;
+}
+.registerSection {
+	width: 650px;
+	margin: 0 auto;
+	padding: 35px 0 35px 10%;
+}
+.registerSection h2 {
+	font-size: 30px;
+}
+form#adduser p.smallprint {
+	margin-top: 0;
+	display: block;
+	clear: both;
+	float: left;
+	font-size: 12px;
+	width: 150px;
+	text-align: right;
+}
+@include respond-to(tablet) {
+	.registerSection {
+		width: 50%;
+		max-width: 520px;
+		padding: 20px 0;
+	}
+
+}
+@include respond-to(mini_tablet) {
+	.registerSection {
+		width: 62%;
+		max-width: 520px;
+		padding: 20px 0;
+	}
+
+}
+@include respond-to(mobile) {
+  	header.sign_up_banner {
+  		padding: 20px 2%;
+  	}
+  	header.sign_up_banner p.required_message {
+		font-size: 12px;
+	}
+	// form styles
+	.registerSection {
+		width: 80%;
+		margin: 0 auto;
+		padding: 35px 0;
+	}
+}
+
+ 
+
+ .two-col{width: 100%}
+.two-col > div {float:left; padding:0!important; margin: 0!important}
+.col3{width: 33.3%;}
+.col9{width: 66.6%;}
+.push-right{float: right!important}
+.two-col .inner_content{min-width: inherit; max-width: 90%; padding: 0 30px;}
+
+@media only screen and (max-width: 800px) {
+    .two-col > div {width: 100%!important}
+}
