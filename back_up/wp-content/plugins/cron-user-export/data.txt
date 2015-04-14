@@ -1,4 +1,0 @@
-
-        SELECT * FROM wp_jgusers WHERE signupdate <= '1397001600' 
-         AND signupdate >= '1396915200' 
-    
